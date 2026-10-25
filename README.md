@@ -46,7 +46,7 @@ Hardware-in-the-loop (HIL) simulation of an SPDC photon-pair experiment using th
 | **DUT team** | `spi_controller.cpp`, `decode.cpp`, and TODO 1 and TODO 2 in `student_dut.ino` |
 | **Plant team** | `spi_peripheral.cpp`, `sim.cpp` |
 
-Each team tests against the instructor's **reference** version of the other team's half, so nobody waits. When both halves work, we swap in your code on both sides. Any failure then is a real SPI interop bug, and we debug it together.
+Each team tests against the **reference** version of the other team's half, so nobody waits. When both halves work, we swap in your code on both sides. Any failure then is a real SPI interop bug, and we debug it together.
 
 ---
 
