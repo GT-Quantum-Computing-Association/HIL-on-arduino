@@ -2,7 +2,7 @@
 
 Hardware-in-the-loop (HIL) simulation of an SPDC photon-pair experiment using three Arduino Uno-compatible boards (Elegoo R3 works).
 
-> **Status:** The reference code was traced by hand but not yet run on real boards. Expect a short bring-up pass before the session.
+> **Status:** The reference code was traced by hand but not yet run on a real board. 
 
 ## Contents
 
