@@ -8,7 +8,7 @@ extern long simRate;       // pairs per second
 extern long simDelayNs;    // optical delay added to arm B only
 extern long simDark;       // dark counts per second
 
-void simInit(char arm, uint32_t seq);    // remember 'A' or 'B', seed your private random stream
+void simInit(char arm);    // remember 'A' or 'B', seed your private random stream
 void set_seed(uint32_t s);
 uint32_t xorshift128(void);
 

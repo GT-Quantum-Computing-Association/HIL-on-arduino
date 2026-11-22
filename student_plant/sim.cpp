@@ -17,7 +17,7 @@ void set_seed(uint32_t s) {
 }
 
 
-void simInit(char arm, uint32_t seq) {
+void simInit(char arm) {
     if (arm == 'A') {
         set_seed(seq * 184833 + 4542);
     }
