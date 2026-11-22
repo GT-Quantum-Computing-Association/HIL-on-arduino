@@ -8,10 +8,12 @@ extern long simRate;       // pairs per second
 extern long simDelayNs;    // optical delay added to arm B only
 extern long simDark;       // dark counts per second
 
-void simInit(char arm);    // remember 'A' or 'B', seed your private random stream
-                           // (use different seeds for A and B)
+void simInit(char arm, uint32_t seq);    // remember 'A' or 'B', seed your private random stream
+void set_seed(uint32_t s);
+uint32_t xorshift128(void);
+
 //
-// 1. Pairs: number of pairs in the window ~ Poisson(simRate * window seconds).
+// 1. Pairs: number of pairs in the window ~ Poisson(Rate * window seconds).
 //    Both plants must draw the SAME pair count and emission times: seed a shared random
 //    stream from seq (e.g. seq * 2654435761 + 12345), and draw count and times from it.
 //    Number pairs 1,2,3... (the pair ID).
