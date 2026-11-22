@@ -1,7 +1,11 @@
-#include <iostream> 
 #include <math.h>
 #include "sim.h"
 
+long simRate = 0.0;
+long simDelayNs = 0.0;
+long simDark = 0.0;
+
+char global_arm;
 static uint32_t x = 8, y = 1, z = 13, w= 1;
  
 uint32_t xorshift128(void) {
@@ -16,15 +20,6 @@ void set_seed(uint32_t s) {
     for (int i = 0; i < 20; ++i) xorshift128();
 }
 
-
-void simInit(char arm) {
-    if (arm == 'A') {
-        set_seed(seq * 184833 + 4542);
-    }
-    else if (arm == 'B') {
-        set_seed(seq * 318754 + 503);
-    }
-}
 
 float uniform_dist() { /*so that we can take random numbers between 0,1*/
     return ((xorshift128() >> 8) + 1) * (1.0f / 16777216.0f);
@@ -72,8 +67,20 @@ void sort_pair(float t[], uint8_t id[], int n) {
     }
 }
 
+void simInit(char arm) {
+if (arm == 'A') {
+    global_arm = 'A';
+    set_seed(43598);
+}
+else if (arm == 'B') {
+    global_arm = 'B';
+    set_seed(5498);
+    }
+}
+
 uint8_t simulate(uint32_t seq, uint8_t numStop, long stopT[], uint8_t stopId[]) {
-    const uint32_t seed = seq * 9354 + 45 ;
+
+    const uint32_t seed = 9354;
     set_seed(seed);
 
     float events[numStop] = {};
@@ -99,11 +106,11 @@ uint8_t simulate(uint32_t seq, uint8_t numStop, long stopT[], uint8_t stopId[]) 
         }
     }
     sort_pair(events,pair_id,numStop);
-    
-    simInit(arm, seq);
+
     for (int i = 0; i < numStop; ++ i) {
         float prob = uniform_dist();
-        if (arm == 'B') {
+        
+        if (global_arm == 'B') {
             events[i] += simDelayNs/1000;
         }
         if (prob >= .12 and not events[i] < 500) {
