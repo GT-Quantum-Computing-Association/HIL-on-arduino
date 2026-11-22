@@ -1,9 +1,6 @@
-#include <iostream>
-#include <random>
-#include <algorithm>
+#include <iostream> 
 #include <math.h>
 #include "sim.h"
-
 
 static uint32_t x = 8, y = 1, z = 13, w= 1;
  
@@ -74,7 +71,6 @@ void sort_pair(float t[], uint8_t id[], int n) {
         id[j + 1] = kid;
     }
 }
-
 
 uint8_t simulate(uint32_t seq, uint8_t numStop, long stopT[], uint8_t stopId[]) {
     const uint32_t seed = seq * 9354 + 45 ;
