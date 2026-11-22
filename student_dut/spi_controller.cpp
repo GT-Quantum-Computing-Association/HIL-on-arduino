@@ -102,7 +102,9 @@ void readResult(uint8_t cs, uint32_t out[N_RESULT_REGS]) {
     delayMicroseconds(INTERBYTE_US);
     uint8_t receivedData3 = SPI.transfer(0x00);
 
-    out[i] = ((uint32_t)receivedData1 << 16) | (uint32_t)receivedData2 << 8) | (uint32_t)receivedData3 );
+    out[i] = (((uint32_t)receivedData1 << 16) |
+          ((uint32_t)receivedData2 << 8)  |
+           (uint32_t)receivedData3) & 0x7FFFFF;
 
     out[i] &= 0x7FFFFF;
   }
