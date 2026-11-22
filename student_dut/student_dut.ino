@@ -2,7 +2,6 @@
 #include "tdc_contract.h"
 #include "spi_controller.h"
 #include "decode.h"
-#include <cmath>
 
 const uint8_t CS_A = 10, CS_B = 9, INT_A = 2, INT_B = 3;
 const float PEAK_NS       = -20.0f;   // expected tA - tB (= -delay). Update for the delay sweep.
@@ -75,7 +74,7 @@ int countCoincidences(const float *a, int nA, const float *b, int nB) {
 
   for (int i = 0; i < nA; i++) {
     for (int j = 0; j < nB; j++) {
-      if (std::abs(a[i] - b[j] - PEAK_NS) <= COINC_HALF_NS) {
+      if (fabsf(a[i] - b[j] - PEAK_NS) <= COINC_HALF_NS) {
         coinc++;
       }
     }
