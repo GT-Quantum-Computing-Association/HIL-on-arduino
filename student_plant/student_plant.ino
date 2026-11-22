@@ -2,7 +2,7 @@
 #include "spi_peripheral.h"
 #include "sim.h"
 
-const char MY_ARM = 'A';          // CHANGE TO 'B' FOR THE OTHER BOARD
+const char MY_ARM = 'B';          // CHANGE TO 'B' FOR THE OTHER BOARD
 
 bool golden = false;              // g<0|1>: send the packet-exercise example
 
